@@ -2,7 +2,7 @@
 import os
 from optparse import OptionParser
 import json
-from urllib import urlopen, urlretrieve
+from urllib.request import urlopen, urlretrieve
 
 
 def _parse_options():
@@ -84,9 +84,9 @@ eula.close()
 
 print("Generating start script")
 start = open('start.sh', 'w+')
-start.write("#!/bin/bash\n\nscreen -S minecraft java -Xmx5120M -Xms5120M -jar minecraft_server.jar\n")
+start.write("#!/bin/bash\n\nscreen -S minecraft java -Xmx5120M -Xms2048M -jar minecraft_server.jar\n")
 start.close()
-os.chmod('start.sh', 0755)
+os.chmod('start.sh', 0o755)
 
 if options.start:
     print("Starting server")
